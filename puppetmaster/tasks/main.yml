@@ -1,3 +1,9 @@
+- name: download puppet repo file
+  get_url: url=https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+           dest=/tmp/puppetlabs-release-trusty.deb
+- name: install puppetmaster repo
+  command: dpkg -i /tmp/puppetlabs-release-trusty.deb
+
 - apt: update-cache=yes cache_valid_time=3600
 - name: dependencies
   action: apt name={{item}} state=present
@@ -6,16 +12,9 @@
     - git
     - ruby-dev
     - make
-    - mysql-server
-    - libmysqlclient-dev
-    - python-mysqldb
-
-- mysql_db: name=puppet state=present
-- gem: name=mysql2 state=present
-- gem: name=rails version=2.3.18 state=present
 
 - name: puppet environments dir
-  file: path=/etc/puppet/environments state=directory owner={{ remote_user }}
+  file: path=/etc/puppet/environments state=directory owner={{ ansible_ssh_user }}
 
 - name: upload puppet.conf
   copy: src={{ puppet_conf }} dest=/etc/puppet/puppet.conf
