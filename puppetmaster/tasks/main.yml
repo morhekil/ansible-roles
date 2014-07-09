@@ -1,5 +1,5 @@
 - name: download puppet repo file
-  get_url: url=https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+  get_url: url=http://apt.puppetlabs.com/puppetlabs-release-trusty.deb
            dest=/tmp/puppetlabs-release-trusty.deb
 - name: install puppetmaster repo
   command: dpkg -i /tmp/puppetlabs-release-trusty.deb
