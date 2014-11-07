@@ -1,0 +1,26 @@
+---
+- file: path=/srv owner=www-data group=www-data recurse=yes state=directory
+- name: upload ntp.conf
+  copy: src=etc/ntp.conf dest=/etc/ntp.conf
+
+- name: apt-get update
+  command: apt-get update
+- name: install common packages
+  apt: pkg={{ item }}
+  with_items:
+    - fail2ban
+    - git-core
+    - vim
+    - screen
+    - moreutils
+    - autoconf
+    - make
+    - cmake
+    - gcc
+    - curl
+    - libxml2-dev
+    - libxslt-dev
+    - libcurl4-openssl-dev
+    - g++
+
+- service: name=fail2ban enabled=yes state=started
