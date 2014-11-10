@@ -14,3 +14,5 @@
   template: src={{ item }} dest=/etc/php5/fpm/pool.d/
   with_items: confs
   notify: restart php5-fpm
+
+- service: name=php5-fpm enabled=yes state=started
