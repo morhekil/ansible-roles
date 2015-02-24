@@ -1,5 +1,6 @@
 - apt_repository: repo=ppa:nginx/stable
 - apt: pkg=nginx
+- group: name=www state=present
 - file: path=/var/www/localhost/html state=directory
 - user: name=nginx group=www shell=/bin/false home=/var/www/localhost/html
 - file: path=/var/www/localhost/html state=directory owner=nginx group=www
