@@ -1,3 +1,5 @@
+- apt: pkg=xtables-addons-dkms
+- apt: pkg=ipset
 - copy: dest="/etc/nginx/ssl/{{ssl_keyname}}.crt" src="files/ssl/{{ssl_keyname}}.crt"
   when: ssl_keyname is defined
   notify: reload nginx
