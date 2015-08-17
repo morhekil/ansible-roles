@@ -1,10 +1,10 @@
 ---
+- name: add ubuntu to www-data
+  user: name=ubuntu append=yes groups=www-data
+
 - file: path=/var/www owner=ubuntu state=directory
 - name: upload ntp.conf
   copy: src=etc/ntp.conf dest=/etc/ntp.conf
-
-- name: add ubuntu to www-data
-  user: name=ubuntu append=yes groups=www-data
 
 - name: apt-get update
   apt: update_cache=yes cache_valid_time=86400
