@@ -28,6 +28,7 @@
 
 - service: name=fail2ban enabled=yes state=started
 
+- file: path=/home/ubuntu/.ssh owner=ubuntu state=directory
 - name: add known ssh hosts
   shell: ssh-keyscan -H bitbucket.org github.com > /home/ubuntu/.ssh/known_hosts
   args:
