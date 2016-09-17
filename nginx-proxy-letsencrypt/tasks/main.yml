@@ -1,0 +1,4 @@
+- apt: pkg=xtables-addons-dkms
+- apt: pkg=ipset
+- template: src=proxy_vhost.conf dest=/etc/nginx/vhosts.d/{{ name }}.conf
+  notify: reload nginx
