@@ -11,5 +11,6 @@
   synchronize: >
     src=nginx dest=/etc
     times=no checksum=yes
+    recursive=yes delete=yes
     set_remote_user=no rsync_path="sudo rsync"
   notify: restart nginx
