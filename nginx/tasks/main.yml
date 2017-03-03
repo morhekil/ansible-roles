@@ -14,3 +14,11 @@
     recursive=yes delete=yes
     set_remote_user=no rsync_path="sudo rsync"
   notify: restart nginx
+
+- name: fix logrotate nginx reload bug
+  replace:
+    dest: /etc/logrotate.d/nginx
+    regexp: 'invoke-rc.d nginx rotate'
+    replace: 'invoke-rc.d nginx reload'
+  tags:
+    - bugfix
